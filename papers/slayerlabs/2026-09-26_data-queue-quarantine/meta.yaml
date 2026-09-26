@@ -1,16 +1,15 @@
 title: "A data queue with quarantine: proposal for online data selection in GoLLeM-v6"
 type: proposal
 status: reviewed
-version: 1
+version: 2
 date: 2026-09-26
 team: slayerlabs
 authors:
   - name: Arkadiusz Słota
-    role: idea
-  - name: Kolektyw (Hart, Latarnik, Monter, Wartownik)
-    role: drafting, editing, implementation, review
+    role: author
 contact: Arkadiusz Słota
-pdf_sha256: 62a84166bbe72f7c59e0443553be71b7c9d7752be91d9d185f63baaae80febb9
+pdf_sha256: b4babd69da52768951cf05c7ac44a017c6151e2f1557a0b3d9ace36eae972316
 results: none
 license: not decided
 related: [slayerlabs/2026-09-26_gollem-v5-report]
+acknowledgements: "Prepared with the Kolektyw AI agents: Hart (draft), Latarnik (editing), Monter (implementation and costs), Wartownik (review)."
