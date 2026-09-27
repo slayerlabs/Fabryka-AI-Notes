@@ -1,0 +1,16 @@
+title: "Checkpoint weight averaging in GoLLeM-v5: a test at a high learning rate and a rule for the end of training"
+type: note
+status: reviewed
+version: 1
+date: 2026-09-27
+team: slayerlabs
+authors:
+  - name: Arkadiusz Słota
+    role: author
+contact: Arkadiusz Słota
+pdf_sha256: 7f28b8100c38b8c323cfa6059bae63c4823607f77ea7c28152d169e30bcdf9b9
+results: preliminary
+license: not decided
+related: [slayerlabs/2026-09-26_gollem-v5-report]
+notes: "Short note. Selection-axis numbers for all decisions; the 64M outcome of the end-of-training rule is included (the 760k checkpoint was kept); the 128M outcome will be added in version 2."
+acknowledgements: "Prepared with the Kolektyw AI agents: Hart (experiments and numbers), Latarnik (draft and editing), Wartownik (review), Monter (training infrastructure)."
