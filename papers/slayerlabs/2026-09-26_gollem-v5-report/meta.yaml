@@ -1,16 +1,16 @@
 title: "GoLLeM-v5: Small Language Models for the Glint Tiny-ML Leaderboard. Measurement, Method and Negative Results"
 type: report
 status: draft
-version: 3
+version: 4
 date: 2026-09-26
 team: slayerlabs
 authors:
   - name: Arkadiusz Słota
     role: author
 contact: Arkadiusz Słota
-pdf_sha256: f4010e2ee50ab5e32fabdbbac33cce3c9be5816e5e95124e8e56afb1aa159fb2
-results: preliminary
+pdf_sha256: 817728d588c3e8730aff3ab41ff07ab9631fdf3751a375738f472f8ef0c348f4
+results: final (64M and 128M)
 license: not decided
 related: [slayerlabs/2026-09-26_data-queue-quarantine]
-notes: "Technical report, draft. Final GoLLeM-v5 runs are in progress; Section 7 will receive their results. v2: Figure 1 updated (final 64M to step 180k, 128M to 120k); Figure 2 (loss curves) and Section 7.4 added. v3: author line Arkadiusz Słota; Kolektyw agents in the acknowledgements."
+notes: "Technical report, draft. v2: Figure 1 updated; Figure 2 and Section 7.4 added. v3: author line Arkadiusz Słota; Kolektyw agents in the acknowledgements. v4: results of the final runs (64M 76.07, 128M 76.94 efficiency; checkpoint chosen by the tail-averaging rule before any test number), the 128M row submitted to the leaderboard (PR #82, not merged at the time of writing), resume wording corrected (exact data position; GPU losses match to about 1e-4, not bit for bit); board status of the PR #78 row updated (replaced in PR #81; checkpoint resubmitted as PR #83)."
 acknowledgements: "Prepared with the Kolektyw AI agents (Latarnik, Hart, Monter, Wartownik); roles in the Acknowledgements section of the PDF."
