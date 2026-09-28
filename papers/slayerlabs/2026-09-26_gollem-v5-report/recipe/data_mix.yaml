@@ -1,0 +1,73 @@
+# GoLLeM-v5 final runs (64M 14x576, 128M 16x768): training data recipe.
+# All numbers come from the build logs and manifests of the report (section 4 "Data" and appendix "Reproducibility").
+
+tokenizer:
+  type: BPE
+  vocab_size: 12288
+  eos_id: 12285
+  file: SlayerLab/gollem-v5-ckpts/tokenizer.json   # sha256 37333075...
+  storage: flat little-endian uint16 token stream, documents separated by EOS
+
+source_corpus:            # ARC-MIX, before the final removal passes
+  name: ARC-MIX
+  card: SlayerLab/gollem-v5-arcmix-9b
+  file: SlayerLab/gollem-ui-mirror/arcmix/train.bin   # dataset repo, commit 486a3af3c48d
+  sha256: e87f594f7866fae7...   # full value in the build manifest; verified before every pool build
+  tokens: 9417035832
+  components:
+    - name: base corpus
+      source: SlayerLab/minimal-en-corpus-5b   # 15-source English blend; revision bb3aec23e3cf at the time of writing
+      license: mixed, per source; no unified licence (see the dataset card)
+      tokens: 5396605407
+      documents: 3968467
+    - name: FineWeb-Edu expansion
+      source: HuggingFaceFW/fineweb-edu, subset sample-100BT   # the dataset revision was not recorded in the build log
+      reproduction: rebuild from the packaged ARC-MIX file above (gollem-ui-mirror commit 486a3af3c48d, sha256 e87f594f...), not from FineWeb-Edu from scratch
+      documents_read: 2384000
+      removed:
+        build_time_decontamination: 3184        # 13-gram shingles against benchmark test sets
+        overlap_with_base_corpus: 42846         # content hash (first/last 2,000 characters)
+      tokens: 2756248149
+      license: ODC-BY 1.0
+    - name: OpenStax textbooks
+      source: openstax.org, 58 English textbooks, CC BY 4.0; text from crumb/openstax-text (revision 8f502ca45f9f)
+      titles_in_final_pool: 55   # 3 titles contain the marker "CC BY-NC-SA" and were removed by the licence rule below
+      attribution: SlayerLab/gollem-v5-ckpts/final_64m_14x576/OPENSTAX_ATTRIBUTION.md and final_128m_16x768/OPENSTAX_ATTRIBUTION.md (required by CC BY 4.0)
+      tokens_once: 35185551
+      repeats: 4
+      tokens: 140742204
+    - name: ARC-relevance extra copies
+      source: the FineWeb-Edu expansion above, scored with a keyword heuristic (arc_score)
+      rule: score >= 4 ("gold", 301650 documents) -> 2 extra copies; score == 3 ("related", 184484) -> 1 extra copy
+      tokens: 1123440072
+  expanded_corpus_tokens: 8293595760   # base + FineWeb-Edu + OpenStax x4, before the extra copies
+
+final_pool:               # what the final runs train on
+  sha256: ecfd0a4040a0ece6f07f728f092a1b373b6d253b4adfbe259c5107c1fc16681d
+  tokens: 9391706576
+  documents: 7088917
+  build: final_arcmix_pool.py (sha256 23c6b46f...), in place, document order kept, no resampling
+  removed_documents: 5537
+  removal_passes:
+    - name: test/validation scan
+      documents: 4362
+      targets: WikiText-2 test and validation, ARC validation and test
+      method: normalized 13-gram index plus exact matching for short questions
+    - name: licence rule
+      documents: 1175
+      rule: document text contains the marker "CC BY-NC-SA"
+      limitation: only this exact spelling is matched; other spellings of the licence are not covered
+  checks: document index contiguous; exact removed-document and token counts asserted; sha256 of the result verified before training
+  tokens_after_scan_only: 9401283628
+
+validation_stream:
+  file: SlayerLab/gollem-v5-ckpts/vals/arcmix_val.bin
+  sha256: 8253a10857ca25ea...
+  use: training-time validation only (not used for model selection)
+
+sampling:
+  sampler: epoch     # every training window once per pass; new permutation and a random window-grid offset per pass
+  seed: 1337
+  window: 1024 tokens
+  passes: about 2.65 (24.9B training tokens over a 9.39B pool)
+  first_pass_ends_at_step: 286612

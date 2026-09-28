@@ -1,0 +1,48 @@
+# GoLLeM-v5 128M final run: training configuration (the exact flags of the run).
+model:
+  name: GoLLeM-v5 128M final (16x768)
+  layers: 16
+  width: 768
+  heads: 12
+  kv_heads: 12
+  parameters: 122759951 (tied input/output embedding counted once)
+  tokens_per_parameter: 202.9
+  context_length: 1024
+  vocab_size: 12288
+  norm: RMSNorm (eps 1e-6)
+  position: RoPE (theta 100000)
+  ffn: SwiGLU (ratio 2.667)
+  qk_norm: true
+  value_residual: true
+  logit_cap: 0
+  z_loss: 0
+training:
+  steps: 760000
+  batch: 32 sequences x 1024 tokens (32768 tokens per step)
+  training_tokens: 24903680000
+  precision: bf16 autocast, torch.compile
+  optimizer:
+    hidden_2d_weights: Muon (lr 0.02, momentum 0.95, Nesterov, 5 Newton-Schulz steps, no weight decay)
+    other_parameters: AdamW (betas 0.9/0.95, weight decay 0.1)   # embeddings, head, norms, biases
+  learning_rate: 6.0e-4 peak (AdamW part)
+  schedule: linear warmup 2000 steps, cosine decay to 6.0e-5 at step 760000
+  grad_clip: 1.0
+  seed: 1337
+  sampler: epoch (see data_mix.yaml)
+  checkpoint_every: 20000
+  result_checkpoint: step 760000, the last one, unless the tail-averaging rule in experiments.md chooses the average of the 720k, 740k and 760k checkpoints (decided after training ends)
+data:
+  pool_sha256: ecfd0a4040a0ece6f07f728f092a1b373b6d253b4adfbe259c5107c1fc16681d
+  validation_sha256: 8253a10857ca25ea...
+trainer:
+  file: SlayerLab/gollem-v5-ckpts/train_gpt_ref_r6.py
+  sha256: 0223c083... (LF line endings)
+  command: >-
+    train_gpt_ref_r6.py --n-layer 16 --n-embd 768 --n-head 12 --block 1024 --vocab 12288
+    --norm rmsnorm --pos rope --rope-theta 100000.0 --ffn swiglu --ffn-mult 2.667 --value-residual --qk-norm
+    --batch 32 --steps 760000 --lr 6e-4 --min-lr 6e-5 --warmup 2000 --wd 0.1 --optimizer muon --muon-lr 0.02
+    --dtype uint16 --seed 1337 --schedule cosine --logit-cap 0 --z-loss 0 --sampler epoch --ckpt-every 20000
+    --eval-every 999999 --log-every 200 --compile --data-dir <pool dir> --out-dir <run dir>
+compute: 1x NVIDIA RTX 5090 (RunPod); resumed once from the Hub checkpoint on a new pod (see the report)
+checkpoints: SlayerLab/gollem-v5-ckpts/final_128m_16x768/ (every 20,000 steps)
+result: SlayerLab/gollem-v5-ckpts/final_128m_16x768/ckpt_760k.pt or the tail average, after training ends (see result_checkpoint)
