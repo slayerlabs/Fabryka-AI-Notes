@@ -1,0 +1,16 @@
+title: "Control sets that the model has not seen: building held-out domain sets for GoLLeM-v6 and checking them against the training pool"
+type: note
+status: reviewed
+version: 1
+date: 2026-09-28
+team: slayerlabs
+authors:
+  - name: Arkadiusz Słota
+    role: author
+contact: Arkadiusz Słota
+pdf_sha256: aef12d6d53f1624d077e8643741b653fd0256af755081ba87f96584689bf6f92
+results: final
+license: not decided
+related: [slayerlabs/2026-09-26_gollem-v5-report]
+notes: "Short note. Five held-out control sets (3 EN, 2 PL) checked against the 9.39B-token GoLLeM-v5 training pool with a word 13-gram scan and a rule fixed before the scan; no control text, n-grams or document lists are published."
+acknowledgements: "Prepared with the Kolektyw AI agents: Hart (sets, scan, draft, numbers), Latarnik (editing), Wartownik (personal-data handling and release review), Monter (pool rebuild)."
