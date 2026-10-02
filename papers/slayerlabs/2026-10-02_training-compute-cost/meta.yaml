@@ -1,0 +1,16 @@
+title: "What does it cost to train a small language model? Training speed and price on rented and own GPUs"
+type: note
+status: reviewed
+version: 1
+date: 2026-10-02
+team: slayerlabs
+authors:
+  - name: Arkadiusz Słota
+    role: author
+contact: Arkadiusz Słota
+pdf_sha256: 0fa260adf7a9fa5c68f51f2b994109010275821eb7cc0a940bf7ee3b3c6980cc
+results: preliminary
+license: not decided
+related: [slayerlabs/2026-09-26_gollem-v5-report]
+notes: "Short note. Version 1 uses only measurements from our own past training runs (31M to 253M parameters on RTX 5090, RTX Pro 6000 and Radeon RX 7900 XTX) and the public RunPod price list of 2026-10-02 12:38 UTC. Version 2 adds GPUs we have not used yet, measured with one benchmark script. A Polish version will be added to this folder as paper_pl.pdf."
+acknowledgements: "Prepared with the Kolektyw AI agents: Hart (measurements and numbers), Latarnik (draft), Wartownik (prices and review), Monter (training infrastructure)."
