@@ -1,0 +1,16 @@
+title: "Data for Slayer 150 1.01: what we use, what we rejected, and how much"
+type: report
+status: draft
+version: 1
+date: 2026-10-07
+team: slayerlabs
+authors:
+  - name: Arkadiusz Słota
+    role: author
+contact: Arkadiusz Słota
+pdf_sha256: 6fbf7f4ff51b4c5d4250dde7a30753c3bf937b33874688726279a7f2f9c37b33
+pdf_pl_sha256: 5776cb79674afa9450336818c0f0e2706b81617f3d099102a8484d487f27e48f
+results: preliminary
+license: not decided
+related: []
+notes: "Data report for the Slayer 150 1.01 run (139M parameters), written while training is in progress. Sources of the top-up corpus with sizes, what was rejected and why, benchmark decontamination (13-gram scans against WikiText-2, ARC and our control sets), and how the training region was packed. paper_pl.pdf is the same report in Polish."
