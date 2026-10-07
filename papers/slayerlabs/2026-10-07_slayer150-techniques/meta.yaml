@@ -1,0 +1,18 @@
+---
+
+title: "Slayer 150 1.01: Choosing a Training Recipe with Decision Rules Fixed Before Each Result"
+type: report
+status: draft
+version: 1
+date: 2026-10-07
+team: slayerlabs
+authors:
+  - name: Arkadiusz Słota
+    role: author
+contact: Arkadiusz Słota
+pdf_sha256: 71e8413433f2168f5542f612bf2885b057711a5778e4ef3a4b1e4e361f297851   # EN
+pdf_pl_sha256: 0b29462b28983f9a09d3351320ec38af8120b59e0653c89259d252f582df89dc   # PL
+results: ablations final (9 arms at 64M / 2B tokens); final 139.3M run in progress, no final-model numbers
+license: not decided
+related: [slayerlabs/2026-10-07_slayer150-data, slayerlabs/2026-10-05_gollem-v6-250m-report, slayerlabs/2026-09-26_gollem-v5-report]
+notes: "Technical report, draft. How the recipe of Slayer 150 1.01 (139.3M parameters, 24k vocabulary, WSD with a 20% decay, about 24.7B unique tokens) was chosen: nine 64M / 2B-token ablations, each judged by a rule written before its result and computed by two independent implementations; one accepted (24k vocabulary), five rejected, three inconclusive or default. Lists the rule changes made before results. Reports that under one shared harness 11 of 12 top leaderboard entries score lower than their self-reported numbers, attributed to differences between evaluation setups. LaTeX sources in en/ and pl/ (slay-paper formatka c2497c79); recipe/ lists the hashes of the scripts and result files behind every number. paper_pl.pdf is the same report in Polish."

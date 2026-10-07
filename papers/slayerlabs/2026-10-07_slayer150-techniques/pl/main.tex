@@ -1,0 +1,18 @@
+% =====================================================================
+%  main.tex — WRAPPER (wiring). NIE pisz tu treści.
+%  Treść jest w tresc/*.tex; wygląd w formatka/slayer.sty (bez zmian, slay-paper c2497c79).
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{formatka/slayer}   % <-- FORMATKA (jedyne miejsce sterujące wyglądem)
+\hypersetup{pdftitle={Slayer 150 1.01: wybór przepisu treningu przy regułach ustalanych przed każdym wynikiem}, pdfauthor={Arkadiusz Słota}, pdfcreator={SlayerLabs}, pdfproducer={SlayerLabs}}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
+
+\begin{document}
+
+\input{tresc/00-strona-tytulowa}   % strona tytułowa + wykres z podpisem
+\input{tresc/10-tresc}             % właściwa treść (body)
+
+\end{document}
