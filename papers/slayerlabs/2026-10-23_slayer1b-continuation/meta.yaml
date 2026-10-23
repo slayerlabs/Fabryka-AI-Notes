@@ -1,15 +1,15 @@
 title: "Slayer1B: Continuing a Polish-Dominant Base Model from 1.5 to 3 Billion Tokens"
 type: report
 status: draft
-version: 1
-date: 2026-10-23
+version: 2
+date: 2026-10-24
 team: slayerlabs
 authors:
-  - name: SlayerLab
-    role: experiments, analysis, writing
-contact: SlayerLab
-pdf_sha256: 4b7c69561f671c782f5aec2219ff7af009818fee8440d10f7c2cf93382ef4660
+  - name: Arkadiusz Słota – Fabryka AI (SlayerLab)
+    role: author
+contact: Arkadiusz Słota
+pdf_sha256: fd95d9f3df307d3680c2570ee96855bbe9e0d5f97bfc31b4a3d5888010210a9e
 results: preliminary
 license: not decided
 related: []
-notes: "Eight-page technical report on the completed Slayer1B 1.00 and 1.01 lineage, with an explicit evidence cutoff of 2026-10-23 21:41 UTC. Separates primary and supplementary evaluation protocols, paired uncertainty, model-token counters and executed work, nominal main-instance accounting and invoices, and conditional training-loss scenarios and measured results. The 6B-token 1.02 continuation is prospective at the cutoff; no achieved 1.02 score is claimed. Institutional attribution; draft status does not assert the authors' final review. Public payload is PDF and metadata only."
+notes: "Version 2 updates the author attribution at the author's request. The scientific body is unchanged from version 1. Eight-page technical report on completed Slayer1B 1.00 and 1.01, with evidence cutoff 2026-10-23 21:41 UTC; the 1.02 continuation remains prospective at that cutoff. Protocols, uncertainty, token accounting and nominal allocation estimates remain separated. Draft/preliminary status and undecided license are retained. Public payload is PDF and metadata only."
