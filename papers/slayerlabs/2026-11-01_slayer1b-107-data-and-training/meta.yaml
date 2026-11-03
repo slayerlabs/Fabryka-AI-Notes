@@ -1,0 +1,16 @@
+title: "Slayer 1.07: data and training method"
+type: report
+status: draft
+version: 1
+date: 2026-11-02
+team: slayerlabs
+authors:
+  - name: Arkadiusz Słota – Fabryka AI (SlayerLab)
+    role: author
+contact: Arkadiusz Słota
+pdf_sha256: f52c853e3a0b43d0cdfffe9c434dc15c005d861b20cb6e09e1df85609973885e
+pdf_pl_sha256: 2425b26167a3284989f97df9dfdd560eada80ba0fd952e250ca20f8d4c3f6b51
+results: preliminary
+license: not decided
+related: [slayerlabs/2026-10-23_slayer1b-continuation]
+notes: "Working draft v0.4.6 of the data and training plan for continuing Slayer 1B from 1.06 (14.52 billion tokens, step 13 848) on the prepared 1.07 set (8 891 005 707 tokens in 9 files). Covers sources and licences, personal-data masking, test-leakage removal, the evaluation track, the batch-1 probe, and cost and data logistics. The 1.07 training run itself had not started at the time of this version. paper_pl.pdf is the same report in Polish. Public payload is PDF and metadata only."
